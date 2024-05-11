@@ -3,9 +3,10 @@ import Layout from '../layout/Layout'
 function About() {
 	return (
 		<Layout>
-			<p>About</p>
+			<h3>About</h3>
 		</Layout>
 	)
 }
 
 export default About
+
