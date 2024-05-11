@@ -28,7 +28,7 @@ export default function Header() {
 				<div className='flex md:hidden'>
 					<button
 						type='button'
-						className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'
+						className='-m-2.5 inline-flex items-center justify-center rounded-md p-1 text-gray-700'
 						onClick={() => setMobileMenuOpen(true)}
 					>
 						<span className='sr-only'>Open main menu</span>
@@ -38,6 +38,7 @@ export default function Header() {
 				<PopoverGroup className='hidden md:flex md:gap-x-12'>
 					{navbarItems.map(item => (
 						<Link
+							key={item.label}
 							to={item.href}
 							className='text-sm font-semibold leading-6 text-gray-900'
 						>
@@ -61,7 +62,7 @@ export default function Header() {
 						</Link>
 						<button
 							type='button'
-							className='-m-2.5 rounded-md p-2.5 text-gray-700'
+							className='-m-2.5 rounded-md p-1 text-gray-700'
 							onClick={() => setMobileMenuOpen(false)}
 						>
 							<span className='sr-only'>Close menu</span>
@@ -74,6 +75,7 @@ export default function Header() {
 								{navbarItems.map(item => (
 									<Link
 										to={item.href}
+										key={item.label}
 										className='-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
 									>
 										{item.label}
