@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 // import type { Pokemon } from './types'
-import type { TMDBResponse } from './types'
+import type { Credits, Details, TMDBResponse } from './types'
 
 // Define a service using a base URL and expected endpoints
 export const moviesApi = createApi({
@@ -21,16 +21,30 @@ export const moviesApi = createApi({
 	}),
 
 	endpoints: builder => ({
-		getPopularMovies: builder.query<TMDBResponse, string>({
+		getPopularMovies: builder.query<TMDBResponse, void>({
 			query: () => `movie/popular?language=en-US&page=1`,
 		}),
 		getMovieImage: builder.query<unknown, string>({
 			query: movieId => `https://api.themoviedb.org/3/movie/${movieId}/images`,
+		}),
+
+		getMovieDetailsById: builder.query<Details, number>({
+			query: movieId => `https://api.themoviedb.org/3/movie/${movieId}`,
+		}),
+
+		getCasts: builder.query<Credits, number>({
+			query: movieId => `https://api.themoviedb.org/3/movie/${movieId}/credits`,
 		}),
 	}),
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetPopularMoviesQuery, useGetMovieImageQuery } = moviesApi
+export const {
+	useGetPopularMoviesQuery,
+	useGetMovieImageQuery,
+	useGetMovieDetailsByIdQuery,
+
+	useGetCastsQuery,
+} = moviesApi
 
