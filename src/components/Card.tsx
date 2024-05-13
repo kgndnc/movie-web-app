@@ -101,7 +101,8 @@ export function CardDetails({
 	return (
 		<div className=''>
 			<p className='text-xs text-left text-gray-600'>
-				{`${hours}h ${mins}min`} / {genresString}
+				{data?.release_date.substring(0, 4)} / {`${hours}h ${mins}min`} /{' '}
+				{genresString}
 			</p>
 		</div>
 	)
