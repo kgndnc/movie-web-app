@@ -24,6 +24,13 @@ export const moviesApi = createApi({
 		getPopularMovies: builder.query<TMDBResponse, void>({
 			query: () => `movie/popular?language=en-US&page=1`,
 		}),
+		getTopRatedMovies: builder.query<TMDBResponse, void>({
+			query: () => `movie/top_rated?language=en-US&page=1`,
+		}),
+		getUpcomingMovies: builder.query<TMDBResponse, void>({
+			query: () => `movie/upcoming?language=en-US&page=1`,
+		}),
+
 		getMovieImage: builder.query<unknown, string>({
 			query: movieId => `https://api.themoviedb.org/3/movie/${movieId}/images`,
 		}),
@@ -44,7 +51,8 @@ export const {
 	useGetPopularMoviesQuery,
 	useGetMovieImageQuery,
 	useGetMovieDetailsByIdQuery,
-
 	useGetCastsQuery,
+	useGetTopRatedMoviesQuery,
+	useGetUpcomingMoviesQuery,
 } = moviesApi
 

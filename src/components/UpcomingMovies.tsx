@@ -1,36 +1,26 @@
 import { useNavigate } from 'react-router-dom'
-
-import {
-	useGetMovieImageQuery,
-	useGetPopularMoviesQuery,
-} from '../redux/services/movies'
+import { useGetUpcomingMoviesQuery } from '../redux/services/movies'
+import MySwiper from './MySwiper'
+import { SwiperSlide } from 'swiper/react'
 import Card, {
 	CardCast,
 	CardContent,
 	CardDetails,
 	CardImage,
 	CardOverview,
-	CardRating,
 	CardTitle,
 	CardVote,
 } from './Card'
 
-// Import Swiper React components
-import { Swiper, SwiperClass, SwiperSlide, useSwiper } from 'swiper/react'
-
-import { Navigation, Pagination } from 'swiper/modules'
-import { useRef } from 'react'
-import MySwiper from './MySwiper'
-
-function PopularMovies() {
+function UpcomingMovies() {
 	const { data, isError, isLoading, error, isSuccess } =
-		useGetPopularMoviesQuery()
+		useGetUpcomingMoviesQuery()
 
 	const navigate = useNavigate()
 
 	return (
 		<section>
-			<h2 className='font-semibold text-2xl'>Popular Movies</h2>
+			<h2 className='font-semibold text-2xl'>Upcoming Movies</h2>
 
 			{/* <div className='cards py-6 grid gap-3 grid-cols-2 sm:grid-cols-4 md:grid-cols-7'> */}
 			<div className='py-6 relative flex '>
@@ -78,5 +68,5 @@ function PopularMovies() {
 	)
 }
 
-export default PopularMovies
+export default UpcomingMovies
 

@@ -70,7 +70,7 @@ button:focus-visible {
 }
 
 .swiper .swiper-button-next:hover,
-.swiper .swiper-button-prev :hover {
+.swiper .swiper-button-prev:hover {
 	background-color: rgba(0 0 0 / 0.2);
 }
 

@@ -27,17 +27,7 @@ function Details() {
 	)
 
 	const { movieId } = useParams()
-	const { data, isError, isLoading, error, isSuccess } =
-		useGetPopularMoviesQuery()
-
 	const { data: details } = useGetMovieDetailsByIdQuery(Number(movieId))
-
-	const selectedMovie = data?.results.find(
-		movie => movie.id === Number(movieId)
-	)
-
-	console.log({ details })
-	console.log({ selectedMovie })
 
 	return (
 		<Layout>
@@ -45,35 +35,35 @@ function Details() {
 				<h2 className='font-semibold mb-8 text-2xl'>Details</h2>
 
 				<main className='min-h-screen container'>
-					<div className='max-w-96 mx-auto flex-col md:max-w-full md:gap-x-8 md:mx-0 md:flex-row flex'>
-						{selectedMovie && (
+					<div className='max-w-96 items-center md:items-start mx-auto flex-col gap-y-4 md:max-w-full md:gap-x-8 md:mx-0 md:flex-row flex'>
+						{details && (
 							<>
 								<Card>
 									<CardImage
-										imageSrc={`https://image.tmdb.org/t/p/w400${selectedMovie.poster_path}`}
+										imageSrc={`https://image.tmdb.org/t/p/w400${details?.poster_path}`}
 									/>
 									<CardContent>
 										<CardTitle
 											alternate={
-												selectedMovie.original_language !== 'en'
-													? selectedMovie.original_title
+												details.original_language !== 'en'
+													? details.original_title
 													: undefined
 											}
 										>
-											{selectedMovie.title}
+											{details.title}
 										</CardTitle>
-										<CardDetails movieId={selectedMovie.id} />
+										<CardDetails movieId={details.id} />
 
 										<div
 											className='block xxs:hidden xs:block '
-											title={selectedMovie.overview}
+											title={details.overview}
 										>
-											<CardOverview>{selectedMovie.overview}</CardOverview>
-											<CardCast movieId={selectedMovie.id} />
+											<CardOverview>{details.overview}</CardOverview>
+											<CardCast movieId={details.id} />
 											<div className=''>
 												<CardVote
-													voteAverage={selectedMovie.vote_average}
-													voteCount={selectedMovie.vote_count}
+													voteAverage={details.vote_average}
+													voteCount={details.vote_count}
 												/>
 											</div>
 										</div>
@@ -88,7 +78,7 @@ function Details() {
 										</p>
 										<img
 											className='rounded'
-											src={`https://image.tmdb.org/t/p/w400${selectedMovie.backdrop_path}`}
+											src={`https://image.tmdb.org/t/p/w400${details.backdrop_path}`}
 											alt=''
 										/>
 									</div>
@@ -106,26 +96,27 @@ function Details() {
 									</p>
 									<p>
 										Release date:{' '}
-										{new Date(details?.release_date).toLocaleDateString() ?? ''}
+										{details?.release_date
+											? new Date(details?.release_date).toLocaleDateString()
+											: ''}
 									</p>
 									<div className='companies'>
 										<p className='mb-2'>Production Companies</p>
 										<div className='flex text-xs gap-4 mb-4'>
 											{details?.production_companies.map(company => (
-												<>
-													<img
-														className='w-20 grow-0 flex-1 h-fit'
-														src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
-														alt={`${company.name}`}
-														title={company.name}
-													/>
-												</>
+												<img
+													key={company.name}
+													className='w-20 grow-0 flex-1 h-fit'
+													src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
+													alt={`${company.name}`}
+													title={company.name}
+												/>
 											))}
 										</div>
 										{/* <pre>{JSON.stringify(selectedMovie, null, 2)}</pre> */}
 									</div>
 									<p>Status: {details?.status}</p>
-									<div className='imdb-link'>
+									<div className='imdb-link w-fit'>
 										<a
 											href={`https://www.imdb.com/title/${details?.imdb_id}`}
 											target='_blank'
@@ -133,7 +124,7 @@ function Details() {
 										>
 											<img
 												src={imdbLogo}
-												className='hover:outline-2 outline-black'
+												className='hover:outline-2 max-w-full max-h-full outline-black'
 												alt='IMDb'
 											/>
 										</a>
