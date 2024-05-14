@@ -3,7 +3,7 @@ import Layout from '../layout/Layout'
 function About() {
 	return (
 		<Layout>
-			<div className='px-8 py-8'>
+			<div className='px-8 py-10 max-w-7xl mx-auto'>
 				<h2 className='font-semibold mb-8 text-2xl'>About</h2>
 				<main className='min-h-[60vh] container'>
 					<p className='text-justify'>

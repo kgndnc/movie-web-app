@@ -2,10 +2,7 @@ import imdbLogo from '../assets/imdb_logo.svg'
 
 import { useParams } from 'react-router-dom'
 import Layout from '../layout/Layout'
-import {
-	useGetMovieDetailsByIdQuery,
-	useGetPopularMoviesQuery,
-} from '../redux/services/movies'
+import { useGetMovieDetailsByIdQuery } from '../redux/services/movies'
 import Card, {
 	CardCast,
 	CardContent,
@@ -31,7 +28,7 @@ function Details() {
 
 	return (
 		<Layout>
-			<div className='px-8 py-8'>
+			<div className='px-8 py-10 max-w-7xl mx-auto'>
 				<h2 className='font-semibold mb-8 text-2xl'>Details</h2>
 
 				<main className='min-h-screen container'>

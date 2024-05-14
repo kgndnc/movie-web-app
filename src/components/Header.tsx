@@ -6,7 +6,7 @@ export default function Header() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
 	return (
-		<header className='header text-white border-gray-400 border-opacity-50 border-b-2 shadow'>
+		<header className='header text-white z-10 border-gray-400 border-opacity-50 border-b-2 shadow'>
 			<GlobalNavbar
 				mobileMenuOpen={mobileMenuOpen}
 				setMobileMenuOpen={setMobileMenuOpen}
