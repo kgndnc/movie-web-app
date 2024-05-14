@@ -1,30 +1,23 @@
 import { useNavigate } from 'react-router-dom'
 
-import {
-	useGetMovieImageQuery,
-	useGetPopularMoviesQuery,
-} from '../redux/services/movies'
+import { useGetPopularMoviesQuery } from '../redux/services/movies'
 import Card, {
 	CardCast,
 	CardContent,
 	CardDetails,
 	CardImage,
 	CardOverview,
-	CardRating,
 	CardTitle,
 	CardVote,
 } from './Card'
 
 // Import Swiper React components
-import { Swiper, SwiperClass, SwiperSlide, useSwiper } from 'swiper/react'
+import { SwiperSlide } from 'swiper/react'
 
-import { Navigation, Pagination } from 'swiper/modules'
-import { useRef } from 'react'
 import MySwiper from './MySwiper'
 
 function PopularMovies() {
-	const { data, isError, isLoading, error, isSuccess } =
-		useGetPopularMoviesQuery()
+	const { data, isSuccess } = useGetPopularMoviesQuery()
 
 	const navigate = useNavigate()
 

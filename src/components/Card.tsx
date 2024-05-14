@@ -87,7 +87,6 @@ function parseRuntime(runtime: number | undefined) {
 }
 
 export function CardDetails({
-	children,
 	movieId,
 }: {
 	children?: ReactNode

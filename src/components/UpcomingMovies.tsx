@@ -13,8 +13,7 @@ import Card, {
 } from './Card'
 
 function UpcomingMovies() {
-	const { data, isError, isLoading, error, isSuccess } =
-		useGetUpcomingMoviesQuery()
+	const { data, isSuccess } = useGetUpcomingMoviesQuery()
 
 	const navigate = useNavigate()
 

@@ -13,8 +13,7 @@ import Card, {
 } from './Card'
 
 function TopRatedMovies() {
-	const { data, isError, isLoading, error, isSuccess } =
-		useGetTopRatedMoviesQuery()
+	const { data, isSuccess } = useGetTopRatedMoviesQuery()
 
 	const navigate = useNavigate()
 
