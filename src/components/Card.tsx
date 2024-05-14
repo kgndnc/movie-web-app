@@ -61,7 +61,7 @@ export function CardVote({
 	return (
 		<div className='pt-4'>
 			<p className='text-xs text-left'>
-				Vote: {voteAverage} ({voteCount})
+				Vote: {voteAverage?.toFixed(2)} ({voteCount})
 			</p>
 		</div>
 	)
