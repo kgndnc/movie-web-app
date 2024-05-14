@@ -71,7 +71,7 @@ function Details() {
 								</Card>
 
 								<div className='space-y-2'>
-									<div className='img-wrapper relative'>
+									<div className='max-w-fit img-wrapper relative'>
 										{/* <p className='absolute w-full text-center mix-blend-luminosity'> */}
 										<p className='absolute bg-[rgba(0_0_0/.1)] bottom-0 backdrop-blur-sm  w-full text-center'>
 											{details?.tagline}

@@ -5,7 +5,7 @@ export default {
 		extend: {
 			colors: {
 				primary: '#2397a7',
-				secondary: '#c86003',
+				secondary: 'rgb(156 163 175)',
 			},
 			screens: {
 				xxs: '320px',
