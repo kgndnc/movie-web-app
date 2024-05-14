@@ -39,6 +39,7 @@ export type Person = {
 	original_name: string
 	popularity: number
 	profile_path: string
+	job?: string
 }
 
 export type Details = {

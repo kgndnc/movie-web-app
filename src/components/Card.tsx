@@ -110,15 +110,25 @@ export function CardDetails({
 export function CardCast({ movieId }: { movieId: number }) {
 	const { data } = useGetCastsQuery(movieId)
 
+	console.log(data)
+
 	const castString = data?.cast
 		.slice(0, 3)
 		.map(actor => actor.name)
 		.join(', ')
 		.toString()
 
+	const director = data?.crew.find(crew => crew.job === 'Director')
+
 	return (
 		<div className='pt-1 sm:pt-4'>
 			<i className='font-sans italic text-xs text-gray-200'>{castString}</i>
+			<br />
+			{director && (
+				<i className='font-sans italic text-xs text-gray-200'>
+					Director: {director.name}
+				</i>
+			)}
 		</div>
 	)
 }
