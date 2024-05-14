@@ -51,10 +51,7 @@ function Details() {
 										</CardTitle>
 										<CardDetails movieId={details.id} />
 
-										<div
-											className='block xxs:hidden xs:block '
-											title={details.overview}
-										>
+										<div className='block xs:block ' title={details.overview}>
 											<CardOverview>{details.overview}</CardOverview>
 											<CardCast movieId={details.id} />
 											<div className=''>
